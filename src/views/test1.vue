@@ -35,14 +35,15 @@
 </template>
 <script>
 export default {
-  name: 'header',
-}
+  name: "header",
+};
 </script>
 <script setup></script>
 <style scoped>
 p {
   margin: 14px;
   font-size: 16px;
+  flex-wrap: nowrap;
 }
 h2 {
   margin: 0px;
@@ -54,6 +55,7 @@ h2 {
 }
 header {
   width: 100%;
+  min-width: 1890px;
   height: 64px;
   background: #262f3e;
   color: #c1c6c8;
