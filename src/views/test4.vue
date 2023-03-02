@@ -23,17 +23,22 @@ const arr2 = reactive([
   { name: "John", age: 24 },
 ]);
 
-const groupByAge = function (arr1, arr2) {
+const groupByAge = function (arr1 = [], arr2 = []) {
   let result = {};
-  let arr = arr1.concat(arr2); // 将数组中的元素去重
-  let temp = new Set(arr);
-  arr = [...temp]; // 根据年龄分组
+  const arr = arr1.concat(arr2);
+  console.log(arr);
   arr.forEach((item) => {
-    let ageGroup = item.age;
-    if (result[ageGroup]) {
-      result[ageGroup].push(item);
+    let age = item.age;
+    if (result[age]) {
+      // push之前判断里面有没有 避免重复
+      let flag = result[age].find(
+        (per) => per.name === item.name && per.age === item.age
+      );
+      if (!flag) {
+        result[age].push(item);
+      }
     } else {
-      result[ageGroup] = [item];
+      result[age] = [item];
     }
   });
   return result;
